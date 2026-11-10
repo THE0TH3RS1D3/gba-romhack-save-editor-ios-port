@@ -1,5 +1,5 @@
 # Gen 3 Save Editor for iPhone
-
+(created using Claude)
 iPhone port of the *GBA Romhack Save Editor* (Ruby/Sapphire/Emerald/FireRed/LeafGreen and ROM hacks such as
 Unbound, Radical Red, Emerald Legacy, Imperium, Heart & Soul). Names of Pokémon, items and moves are read from
 the ROM you open.
