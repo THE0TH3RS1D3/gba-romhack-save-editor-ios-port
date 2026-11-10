@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Gen 3 Save Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Gen 3 Save Editor</h1>
+    <button id="btnSave" class="primary" disabled>Save<span id="dirty" hidden> •</span></button>
+  </header>
+  <div id="status"></div>
+  <div id="warn" hidden></div>
+  <main id="main"></main>
+  <nav id="tabs">
+    <button data-tab="file">📂<span>File</span></button>
+    <button data-tab="pokemon">🐾<span>Pokémon</span></button>
+    <button data-tab="bag">🎒<span>Bag</span></button>
+    <button data-tab="trainer">👤<span>Trainer</span></button>
+    <button data-tab="info">ℹ️<span>Info</span></button>
+  </nav>
+</div>
+<div id="overlays"></div>
+<div id="busy" hidden><div class="spinner"></div><div id="busyText"></div></div>
+<div id="toast" hidden></div>
+<script src="gen3lib.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
