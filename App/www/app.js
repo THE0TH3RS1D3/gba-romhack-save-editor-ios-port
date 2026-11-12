@@ -671,9 +671,19 @@ function renderAll() {
   renderHeader();
   document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === S.tab));
   const main = $("#main"), top = main.scrollTop;
+  const oldChips = main.querySelector(".chips"), chipLeft = oldChips ? oldChips.scrollLeft : 0;
   main.textContent = "";
   ({ file: renderFile, pokemon: renderPokemon, bag: renderBag, trainer: renderTrainer, info: renderInfo })[S.tab](main);
   main.scrollTop = top;
+  const chips = main.querySelector(".chips");      // keep the pocket bar where it was (no jump back to the start)
+  if (chips) {
+    chips.scrollLeft = chipLeft;
+    if (S.tab === "bag") {                          // only scroll if the selected pocket is out of view
+      const on = chips.querySelector(".on");
+      if (on && (on.offsetLeft < chips.scrollLeft || on.offsetLeft + on.offsetWidth > chips.scrollLeft + chips.clientWidth))
+        chips.scrollLeft = on.offsetLeft - (chips.clientWidth - on.offsetWidth) / 2;
+    }
+  }
 }
 document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", () => setTab(b.dataset.tab)));
 $("#btnSave").addEventListener("click", writeSave);
